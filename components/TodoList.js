@@ -6,7 +6,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <FlatList
-        style = {{maxHeight: 200}}
+        style = {{maxHeight: 200, width: '100%', paddingTop: 5}}
         data = {this.props.todos}
         renderItem = {({item}) => {
           return (
