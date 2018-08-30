@@ -7,7 +7,6 @@ class Todo extends React.Component {
       <Text
         style={{
           display: 'flex', 
-          textDecorationLine: this.props.isCompleted ? 'line-through' : 'none', 
           fontSize: 30, 
           borderBottomWidth: 1, 
           flex: 1, 
@@ -15,7 +14,15 @@ class Todo extends React.Component {
         }}
         onPress={this.props.onPress} // Return a passed function from parent. It is in props.
       >
-        {this.props.text}
+        <Text style={{fontSize: 10, paddingRight: 10, color: 'green'}}>
+          {this.props.isCompleted ? 'Done' : ''}
+        </Text>
+        <Text
+          style={{
+            textDecorationLine: this.props.isCompleted ? 'line-through' : 'none', 
+          }}>
+          {this.props.text}
+        </Text>
       </Text>
     )
   }
