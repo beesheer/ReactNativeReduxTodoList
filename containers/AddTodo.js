@@ -12,16 +12,16 @@ class AddTodo extends React.Component {
   }
 
   render() {
-    let input
-
     return (
-      <View>
-        <TextInput 
+      <View style={{flexDirection: 'row'}}>
+        <TextInput
+          style={{flex: 1}} 
           value={this.state.currentText}
           onChangeText={(text) => this.setState({currentText: text})} 
           placeholder='Enter Todo...' 
         />
         <Button
+          style={{flex: 1}}
           onPress={() => {
             if (this.state.currentText.trim() == '') {
               alert('Please enter todo');
