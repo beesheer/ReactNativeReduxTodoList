@@ -4,20 +4,31 @@ import { addTodo } from '../actions'
 import { connect } from 'react-redux';
 
 class AddTodo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentText: ''
+    }
+  }
+
   render() {
     let input
 
     return (
       <View>
-        <TextInput ref={node => input = node} />
+        <TextInput 
+          value={this.state.currentText}
+          onChangeText={(text) => this.setState({currentText: text})} 
+          placeholder='Enter Todo...' 
+        />
         <Button
           onPress={() => {
-            //alert('test');
-            //console.log(addTodo(input._lastNativeText));
-            console.log(input._lastNativeText);
-            this.props.dispatch(addTodo(input._lastNativeText));
-            //console.log(input.value);
-            input.setNativeProps({text: ''})
+            if (this.state.currentText.trim() == '') {
+              alert('Please enter todo');
+              return false;
+            }
+            this.props.dispatch(addTodo(this.state.currentText));
+            this.setState({currentText: ''});
           }}
           title='Add Todo'
         />
